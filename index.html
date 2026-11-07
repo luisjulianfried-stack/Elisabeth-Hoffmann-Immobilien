@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#141a24">
 <title>Elisabeth Hoffmann Immobilien</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Elisabeth Hoffmann Immobilien, Grünwald. Diskrete Vermarktung exklusiver Villen, Penthäuser und Altbauwohnungen in München und im Münchner Süden.">
@@ -236,22 +242,79 @@ footer nav{display:flex;gap:24px}
 footer a{text-decoration:none}
 @media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
 
+/* MOBILE MENU */
+.menu-btn{display:none;background:none;border:0;padding:8px 0 8px 12px;margin:-8px 0;color:inherit;cursor:pointer;align-items:center;gap:10px;font:600 11.5px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase}
+.menu-btn i{position:relative;display:block;width:22px;height:1.5px;background:currentColor;transition:background .3s}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:22px;height:1.5px;background:currentColor;transition:transform .35s}
+.menu-btn i::before{top:-6px}.menu-btn i::after{top:6px}
+.nav.open .menu-btn i{background:transparent}
+.nav.open .menu-btn i::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .menu-btn i::after{transform:translateY(-6px) rotate(-45deg)}
+.nav .m-only{display:none}
+@media (max-width:820px){
+  .menu-btn{display:inline-flex}
+  .nav .cta{display:none}
+  .nav ul{display:flex;position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;gap:6px;padding:90px max(var(--gutter),env(safe-area-inset-left,0px)) 40px;background:var(--night);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+  .nav.open ul{opacity:1;visibility:visible}
+  .nav ul li{border-bottom:1px solid var(--line-dark)}
+  .nav ul a{display:block;padding:18px 0;font-family:var(--f-display);font-size:34px;font-weight:500;letter-spacing:0;text-transform:none;text-shadow:none}
+  .nav .m-only{display:block}
+  .nav .m-only a{color:var(--brass-soft)}
+  .nav.open{background:var(--night);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media (max-width:600px){
+  .nav .brand{font-size:13px;letter-spacing:.14em;line-height:1.35}
+  .nav .brand span{display:block}
+  .nav.at-top{padding-block:18px}
+  .hero h1{font-size:12.4vw;line-height:1}
+  .hero-copy{gap:20px;padding-bottom:max(36px,env(safe-area-inset-bottom,0px))}
+  .hero .sub{padding-bottom:0}
+  .statement{padding-block:84px 72px}
+  .statement .label{margin-bottom:22px}
+  .statement p{font-size:clamp(28px,8vw,36px)}
+  .about{padding-block:64px 72px;gap:36px}
+  .objects-head{padding-block:72px 28px}
+  .track{gap:56px;padding-bottom:72px}
+  .interior{padding-block:64px 40px}
+  .room{padding-block:32px}
+  .place{height:auto;min-height:0}
+  .place-copy{height:auto;gap:56px;padding-block:96px 48px}
+  .areas li{flex-basis:100%;flex-direction:row;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-dark)}
+  .areas{gap:0}
+  .areas span{text-align:right}
+  .process{padding-block:72px}
+  .process-head{margin-bottom:36px}
+  .steps{padding-left:0}
+  .steps .rail{display:none}
+  .step{padding-block:26px}
+  .office{padding-block:64px 72px}
+  .contact{padding-block:72px 40px}
+  .contact-grid{gap:48px}
+  .big-word{display:none}
+  footer{margin-top:48px;flex-direction:column}
+  .btn{align-self:stretch;justify-content:center}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
+</head>
+<body>
 <script>document.documentElement.classList.add("js")</script>
 <div class="curtain" aria-hidden="true"><span>E · H</span></div>
 <div class="progress" aria-hidden="true"></div>
 
 <header class="nav wrap">
   <a class="brand" href="#top" aria-label="Elisabeth Hoffmann Immobilien">Elisabeth Hoffmann <span>Immobilien</span></a>
-  <ul>
+  <ul id="nav-links">
     <li><a href="#ueber">Profil</a></li>
     <li><a href="#objekte">Objekte</a></li>
     <li><a href="#ablauf">Leistungen</a></li>
     <li><a href="#buero">Büro</a></li>
+    <li class="m-only"><a href="#kontakt">Beratung anfragen</a></li>
   </ul>
   <a class="cta" href="#kontakt">Beratung</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links"><span class="menu-txt">Menü</span><i aria-hidden="true"></i></button>
 </header>
 
 <main id="top">
@@ -492,7 +555,12 @@ footer a{text-decoration:none}
     if(ok){form.querySelectorAll('.row2,.field,button').forEach(function(el){el.hidden=true});document.getElementById('f-sent').hidden=false;}
   });
 
-  var nav=document.querySelector('.nav');function navState(){nav.classList.toggle('at-top',window.scrollY<window.innerHeight*.6)}navState();window.addEventListener('scroll',navState,{passive:true});
+  var nav=document.querySelector('.nav');function navState(){nav.classList.toggle('at-top',window.scrollY<window.innerHeight*.6&&!nav.classList.contains('open'))}navState();window.addEventListener('scroll',navState,{passive:true});
+  var mb=document.querySelector('.menu-btn');
+  function setMenu(o){nav.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.querySelector('.menu-txt').textContent=o?'Schließen':'Menü';document.documentElement.style.overflow=o?'hidden':'';if(typeof lenis!=='undefined'&&lenis){o?lenis.stop():lenis.start()}navState();}
+  mb.addEventListener('click',function(){setMenu(!nav.classList.contains('open'))});
+  nav.querySelectorAll('ul a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
 
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!window.gsap||!window.ScrollTrigger||reduced){document.documentElement.classList.add(reduced?'reduced':'no-js');return;}
@@ -616,3 +684,5 @@ footer a{text-decoration:none}
   window.addEventListener('load',function(){ScrollTrigger.refresh()});
 })();
 </script>
+</body>
+</html>
