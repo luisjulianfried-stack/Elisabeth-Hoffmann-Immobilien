@@ -423,7 +423,7 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
   /* HAUSTOUR: pinned, each room wipes in over the last */
   var scenes=gsap.utils.toArray('.scene'),caps=gsap.utils.toArray('.cap'),rooms=gsap.utils.toArray('.rooms li'),count=document.querySelector('.count'),N=scenes.length;
   var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.tour',start:'top top',end:function(){return '+='+Math.round(window.innerHeight*(N-1)*.85)},pin:'.tour-pin',scrub:.7,anticipatePin:1,invalidateOnRefresh:true,
-    onUpdate:function(st){var i=Math.max(0,Math.min(N-1,Math.floor(st.animation.time()+.3)));rooms.forEach(function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('done',k<i)});count.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+N).slice(-2);}}});
+    onUpdate:function(st){var i=Math.max(0,Math.min(N-1,Math.floor(st.animation.time()+.45)));rooms.forEach(function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('done',k<i)});count.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+N).slice(-2);}}});
   scenes.forEach(function(sc,i){
     if(i===0)return;
     var at=i-.55;
