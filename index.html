@@ -132,6 +132,10 @@ a{color:inherit}
 .scene{position:absolute;inset:0;margin:0;overflow:hidden;clip-path:inset(100% 0 0 0)}
 .scene:first-child{clip-path:inset(0 0 0 0)}
 .scene img{width:100%;height:100%;object-fit:cover}
+.scene video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.scene video.ready{opacity:1}
+.tour-frame .badge{position:absolute;left:18px;top:16px;z-index:2;display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(20,26,36,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#f4efe6;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.tour-frame .badge i{width:6px;height:6px;border-radius:50%;background:var(--brass-soft)}
 .count{position:absolute;right:18px;bottom:16px;z-index:2;color:#f4efe6;font-family:var(--f-display);font-style:italic;font-weight:500;font-size:20px;text-shadow:0 1px 12px rgba(0,0,0,.5);font-variant-numeric:tabular-nums}
 @media (max-width:820px){
   .tour-pin{grid-template-columns:1fr;align-content:start;gap:22px;padding-block:calc(env(safe-area-inset-top,0px) + 84px) 24px}
@@ -278,7 +282,7 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
         <ol class="rooms" aria-hidden="true"><li class="on">Eingangshalle</li><li>Küche</li><li>Schlafzimmer</li><li>Bad</li><li>Garten</li></ol>
         <div class="caps"><div class="cap"><span class="k">01 · Eingangshalle</span><h2 class="display">Der erste Eindruck</h2><p>Halle, Treppe und das Licht des hohen Fensters. Jede Besichtigung beginnt genau hier.</p></div><div class="cap"><span class="k">02 · Küche</span><h2 class="display">Marmor und Morgenlicht</h2><p>Calacatta-Marmor unter Altbaustuck, so präsentiert, wie er im Tageslicht wirkt.</p></div><div class="cap"><span class="k">03 · Schlafzimmer</span><h2 class="display">Ruhe hinter hohen Fenstern</h2><p>Leinen, Fischgrätparkett und der Blick auf die Türme der Frauenkirche.</p></div><div class="cap"><span class="k">04 · Bad</span><h2 class="display">Travertin und Garten</h2><p>Eine freistehende Steinwanne vor dem Garten. Details wie dieses entscheiden.</p></div><div class="cap"><span class="k">05 · Garten</span><h2 class="display">Ins rechte Licht gerückt</h2><p>So erleben Käufer Ihre Immobilie: als Gesamtbild, Raum für Raum.</p><a class="btn" href="#kontakt">Besichtigung vereinbaren <span class="arr"></span></a></div></div>
       </div>
-      <div class="tour-frame"><figure class="scene"><img src="img/treppe.jpg" alt="Geschwungene Steintreppe mit Holzhandlauf in der Eingangshalle" style="object-position:62% 40%" loading="eager"></figure><figure class="scene"><img src="img/kueche.jpg" alt="Küche mit Calacatta-Marmorinsel unter Stuckdecke" style="object-position:45% 50%" loading="eager"></figure><figure class="scene"><img src="img/schlafzimmer.jpg" alt="Schlafzimmer mit Leinen, Stuck und Blick auf die Frauenkirche" style="object-position:55% 50%" loading="eager"></figure><figure class="scene"><img src="img/bad.jpg" alt="Bad mit freistehender Steinwanne und Gartenblick" style="object-position:60% 50%" loading="eager"></figure><figure class="scene"><img src="img/pool.jpg" alt="Infinity-Pool mit Travertinterrasse und Blick auf See und Alpen" style="object-position:70% 50%" loading="eager"></figure><span class="count" aria-hidden="true">01 / 05</span></div>
+      <div class="tour-frame"><figure class="scene"><img src="img/treppe.jpg" alt="Geschwungene Steintreppe mit Holzhandlauf in der Eingangshalle" style="object-position:62% 40%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/bfface22-7fc4-4667-8459-a88a8699e823.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/kueche.jpg" alt="Küche mit Calacatta-Marmorinsel unter Stuckdecke" style="object-position:45% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/c8cd405e-9e5f-4180-abd8-767794aa6bf9.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/schlafzimmer.jpg" alt="Schlafzimmer mit Leinen, Stuck und Blick auf die Frauenkirche" style="object-position:55% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/ed33e01e-4929-464f-8dac-b5056ad96fd3.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/bad.jpg" alt="Bad mit freistehender Steinwanne und Gartenblick" style="object-position:60% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/4f9b13dd-fb5c-45b4-8cd2-ef38c1bcabe4.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/pool.jpg" alt="Infinity-Pool mit Travertinterrasse und Blick auf See und Alpen" style="object-position:70% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/ad8ee5f4-7312-46ce-87c6-ad46d8722175.mp4" aria-hidden="true"></video></figure><span class="badge" aria-hidden="true"><i></i>3D-Rundgang</span><span class="count" aria-hidden="true">01 / 05</span></div>
     </div>
   </section>
 
@@ -438,8 +442,10 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
 
   /* HAUSTOUR: pinned, each room wipes in over the last */
   var scenes=gsap.utils.toArray('.scene'),caps=gsap.utils.toArray('.cap'),rooms=gsap.utils.toArray('.rooms li'),count=document.querySelector('.count'),N=scenes.length;
-  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.tour',start:'top top',end:function(){return '+='+Math.round(window.innerHeight*(N-1)*.85)},pin:'.tour-pin',scrub:.7,anticipatePin:1,invalidateOnRefresh:true,
-    onUpdate:function(st){var i=Math.max(0,Math.min(N-1,Math.floor(st.animation.time()+.45)));rooms.forEach(function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('done',k<i)});count.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+N).slice(-2);}}});
+  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'.tour',start:'top top',end:function(){return '+='+Math.round(window.innerHeight*(N-1)*1.15)},pin:'.tour-pin',scrub:.7,anticipatePin:1,invalidateOnRefresh:true,
+    onUpdate:function(st){sync(st.animation.time())}}});
+  function sync(t){var i=Math.max(0,Math.min(N-1,Math.floor(t+.45)));rooms.forEach(function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('done',k<i)});count.textContent=('0'+(i+1)).slice(-2)+' / '+('0'+N).slice(-2);}
+  tl.eventCallback('onUpdate',function(){sync(tl.time())});
   scenes.forEach(function(sc,i){
     if(i===0)return;
     var at=i-.55;
@@ -450,6 +456,25 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
       .fromTo(caps[i],{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.25},at+.12);
   });
   tl.to({},{duration:.35});
+  /* 3D camera flights: each room's clip is scrubbed by the scroll position */
+  var vids=scenes.map(function(sc){return sc.querySelector('video')});
+  vids.forEach(function(v){
+    if(!v)return;
+    v.pause();
+    v.addEventListener('loadeddata',function(){v.classList.add('ready')},{once:true});
+    if(v.readyState>=2)v.classList.add('ready');
+  });
+  function seek(v,p){if(!v||v.readyState<1)return;var d=isFinite(v.duration)&&v.duration>0?v.duration:5;var t=Math.min(d-.05,Math.max(0,p*d));if(Math.abs(v.currentTime-t)>.03)v.currentTime=t;}
+  scenes.forEach(function(sc,i){
+    var v=vids[i];if(!v)return;
+    var start=i===0?0:i-.55,end=i===N-1?tl.duration():i+1,pr={p:0};
+    tl.to(pr,{p:1,duration:end-start,ease:'none',onUpdate:function(){seek(v,pr.p)}},start);
+  });
+  /* iOS only buffers video after a user gesture */
+  var unlocked=false;
+  function unlock(){if(unlocked)return;unlocked=true;vids.forEach(function(v){if(!v)return;var pr=v.play();if(pr&&pr.then)pr.then(function(){v.pause()}).catch(function(){});});}
+  window.addEventListener('touchstart',unlock,{once:true,passive:true});
+  window.addEventListener('pointerdown',unlock,{once:true});
 
   /* reveals */
   gsap.utils.toArray('.about-copy > *, .process-head > *, .contact-left > *').forEach(function(el){
