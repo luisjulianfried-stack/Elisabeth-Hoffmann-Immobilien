@@ -78,37 +78,54 @@ a{color:inherit}
 }
 
 /* HERO (editorial) */
-.hero{background:var(--stone);color:var(--ink);min-height:100svh;display:grid;grid-template-rows:1fr auto;padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
-.hero-main{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,110px);align-items:center;padding-block:clamp(28px,6vh,72px)}
-.hero-copy{display:flex;flex-direction:column;gap:30px;min-width:0}
+.hero{background:var(--stone);color:var(--ink);padding-top:calc(env(safe-area-inset-top,0px) + 84px);padding-bottom:clamp(56px,8vh,96px)}
+.hero-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,96px);align-items:end;padding-block:clamp(36px,7vh,80px) clamp(32px,5vh,56px)}
+.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
 .hero-copy .label{color:var(--brass)}
-.hero-copy h1{font-family:var(--f-display);font-weight:600;font-size:clamp(46px,5.6vw,94px);line-height:1.03;letter-spacing:-.022em;margin:0}
-.hero-copy h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero-copy h1{font-family:var(--f-display);font-weight:600;font-size:clamp(44px,5.4vw,88px);line-height:1.06;letter-spacing:-.02em;margin:0}
+.hero-copy h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
 .hero-copy h1 .ln > span{display:inline-block}
-.hero-copy h1 em{font-style:italic;font-weight:400;color:var(--brass)}
-.hero-copy p{margin:0;font-size:18px;line-height:1.7;max-width:38ch;color:#33363c}
-.hero-ctas{display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+.hero-copy h1 em{font-style:italic;font-weight:500;color:var(--brass)}
+.hero-side{display:flex;flex-direction:column;gap:28px;min-width:0;padding-bottom:.5em}
+.hero-side p{margin:0;font-size:18px;line-height:1.7;max-width:40ch;color:#33363c}
+.hero-ctas{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
 .btn-dark{background:var(--ink);border-color:var(--ink);color:var(--stone)}
 .btn-dark:hover{background:var(--brass);border-color:var(--brass);color:var(--ink)}
 .lnk{font:700 12px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px}
-.hero-pic{position:relative;height:min(72svh,760px);margin:0}
-.hero-pic .frame{position:absolute;inset:0;overflow:hidden}
-.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
-.hero-pic figcaption{position:absolute;left:-1px;bottom:-1px;background:var(--stone);padding:18px 26px 0 0;display:flex;flex-direction:column;gap:2px}
-.hero-pic figcaption b{font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.2}
-.hero-pic figcaption span{font-size:13.5px;color:var(--umber)}
-.hero-foot{display:flex;justify-content:space-between;gap:20px;padding-block:22px;border-top:1px solid var(--line-light);color:var(--umber)}
-@media (max-width:820px){
-  .hero{padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
-  .hero-main{grid-template-columns:1fr;gap:28px;padding-block:8px 48px}
-  .hero-pic{order:-1;height:46svh}
-  .hero-copy{gap:20px}
-  .hero-copy h1{font-size:clamp(38px,11vw,48px)}
-  .hero-copy p{font-size:16.5px}
-  .hero-ctas{flex-direction:column;align-items:stretch;gap:20px;text-align:center}
-  .hero-ctas .btn{justify-content:center}
+.hero-visual{position:relative}
+.hero-visual .frame{position:relative;height:clamp(340px,calc(100svh - 480px),640px);overflow:hidden;border-radius:2px}
+.hero-visual img{position:absolute;left:0;top:-5%;width:100%;height:110%;object-fit:cover;object-position:50% 60%}
+.hero-visual .tag{position:absolute;left:24px;top:24px;z-index:2;background:rgba(236,230,220,.92);color:var(--ink);padding:9px 14px;font:700 11px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase}
+.quick{position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:-64px clamp(16px,4vw,64px) 0;background:#f7f3ec;box-shadow:0 24px 60px -28px rgba(20,26,36,.45)}
+.quick a{display:flex;flex-direction:column;gap:8px;padding:24px 30px 26px;text-decoration:none;color:var(--ink);position:relative;transition:background .35s}
+.quick a + a{border-left:1px solid var(--line-light)}
+.quick a:hover{background:#fff}
+.quick .label{color:var(--brass);font-size:11px}
+.quick b{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,1.7vw,25px);line-height:1.25;padding-right:44px}
+.quick .arr{position:absolute;right:30px;bottom:38px;width:26px;height:1px;background:var(--ink);transition:transform .35s}
+.quick .arr::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg);color:var(--ink)}
+.quick a:hover .arr{transform:translateX(6px)}
+@media (max-width:900px){
+  .hero-top{grid-template-columns:1fr;align-items:start;gap:22px}
+  .hero-side{padding-bottom:0}
+}
+@media (max-width:760px){
+  .hero{padding-top:calc(env(safe-area-inset-top,0px) + 76px);padding-bottom:48px}
+  .hero-top{padding-block:22px 28px;gap:18px}
+  .hero-copy{gap:16px}
+  .hero-copy h1{font-size:clamp(36px,10.5vw,46px)}
+  .hero-side{gap:22px}
+  .hero-side p{font-size:16.5px}
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:18px;text-align:center}
+  .hero-ctas .btn{justify-content:center;align-self:stretch}
   .lnk{align-self:center}
-  .hero-foot{display:none}
+  .hero-visual .frame{height:42svh;min-height:260px}
+  .hero-visual .tag{left:14px;top:14px}
+  .quick{grid-template-columns:1fr;margin:-28px 12px 0}
+  .quick a{padding:20px 22px}
+  .quick a + a{border-left:0;border-top:1px solid var(--line-light)}
+  .quick b{font-size:19px}
+  .quick .arr{right:22px;bottom:auto;top:50%}
 }
 
 /* HAUSTOUR */
@@ -123,8 +140,8 @@ a{color:inherit}
 .cap h2{font-size:clamp(36px,4.2vw,64px);color:#f4efe6}
 .cap p{margin:0;max-width:40ch;color:var(--mist)}
 .cap .btn{margin-top:6px}
-.rooms{list-style:none;margin:0;padding:0;display:flex;gap:8px}
-.rooms li{flex:1;display:flex;flex-direction:column;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,.45);transition:color .4s}
+.rooms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.rooms li{flex:1;display:flex;flex-direction:column;gap:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:clip;color:rgba(244,239,230,.45);transition:color .4s}
 .rooms li::before{content:"";height:2px;background:rgba(244,239,230,.18);transition:background .4s}
 .rooms li.on{color:#f4efe6}.rooms li.on::before{background:var(--brass-soft)}
 .rooms li.done::before{background:rgba(214,185,138,.55)}
@@ -259,19 +276,24 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
 <main id="top">
   <!-- HERO -->
   <section class="hero" aria-label="Start">
-    <div class="hero-main wrap">
+    <div class="hero-top wrap">
       <div class="hero-copy">
-        <span class="label">Private Immobilienvermittlung · Grünwald</span>
-        <h1><span class="ln"><span>Außergewöhnliche</span></span><span class="ln"><span>Häuser, <em>diskret</em></span></span><span class="ln"><span><em>vermittelt.</em></span></span></h1>
-        <p>Villen, Penthäuser und Altbauetagen im Münchner Süden. Persönlich betreut, vom ersten Gespräch bis zur Übergabe.</p>
-        <div class="hero-ctas"><a class="btn btn-dark" href="#kontakt">Beratung anfragen <span class="arr"></span></a><a class="lnk" href="#haustour">Zur Haustour</a></div>
+        <span class="label">Immobilienmakler · München &amp; Umland</span>
+        <h1><span class="ln"><span>Ihr Zuhause</span></span><span class="ln"><span>in <em>guten Händen.</em></span></span></h1>
       </div>
-      <figure class="hero-pic">
-        <div class="frame"><img src="img/villa-abend.jpg" alt="Villa mit Natursteinfassade und beleuchteten Sprossenfenstern im Parkgrundstück zur blauen Stunde" fetchpriority="high"></div>
-        <figcaption><b>Villa im Parkgrundstück</b><span>Grünwald · Off-Market</span></figcaption>
-      </figure>
+      <div class="hero-side">
+        <p>Ob Verkauf, Kauf oder Bewertung: Elisabeth Hoffmann Immobilien begleitet Sie persönlich und transparent, vom ersten Gespräch bis zur Schlüsselübergabe.</p>
+        <div class="hero-ctas"><a class="btn btn-dark" href="#kontakt">Beratung anfragen <span class="arr"></span></a><a class="lnk" href="#objekte">Aktuelle Objekte</a></div>
+      </div>
     </div>
-    <div class="hero-foot wrap label"><span>Grünwald · Bogenhausen · Starnberger See</span><span>Termine nach Vereinbarung</span></div>
+    <div class="hero-visual wrap">
+      <div class="frame"><img src="img/villa-abend.jpg" alt="Villa mit Natursteinfassade und beleuchteten Sprossenfenstern zur blauen Stunde" fetchpriority="high"><span class="tag">Grünwald · Pullach · München</span></div>
+      <nav class="quick" aria-label="Schnellzugriff">
+        <a href="#kontakt"><span class="label">Verkaufen</span><b>Immobilie bewerten lassen</b><i class="arr" aria-hidden="true"></i></a>
+        <a href="#objekte"><span class="label">Kaufen</span><b>Angebote entdecken</b><i class="arr" aria-hidden="true"></i></a>
+        <a href="#leistungen"><span class="label">Ablauf</span><b>So begleiten wir Sie</b><i class="arr" aria-hidden="true"></i></a>
+      </nav>
+    </div>
   </section>
 
   <!-- HAUSTOUR -->
@@ -279,7 +301,7 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
     <div class="tour-pin wrap">
       <div class="tour-text">
         <span class="label">Haustour</span>
-        <ol class="rooms" aria-hidden="true"><li class="on">Eingangshalle</li><li>Küche</li><li>Schlafzimmer</li><li>Bad</li><li>Garten</li></ol>
+        <ol class="rooms" aria-hidden="true"><li class="on">Halle</li><li>Küche</li><li>Schlafen</li><li>Bad</li><li>Garten</li></ol>
         <div class="caps"><div class="cap"><span class="k">01 · Eingangshalle</span><h2 class="display">Der erste Eindruck</h2><p>Halle, Treppe und das Licht des hohen Fensters. Jede Besichtigung beginnt genau hier.</p></div><div class="cap"><span class="k">02 · Küche</span><h2 class="display">Marmor und Morgenlicht</h2><p>Calacatta-Marmor unter Altbaustuck, so präsentiert, wie er im Tageslicht wirkt.</p></div><div class="cap"><span class="k">03 · Schlafzimmer</span><h2 class="display">Ruhe hinter hohen Fenstern</h2><p>Leinen, Fischgrätparkett und der Blick auf die Türme der Frauenkirche.</p></div><div class="cap"><span class="k">04 · Bad</span><h2 class="display">Travertin und Garten</h2><p>Eine freistehende Steinwanne vor dem Garten. Details wie dieses entscheiden.</p></div><div class="cap"><span class="k">05 · Garten</span><h2 class="display">Ins rechte Licht gerückt</h2><p>So erleben Käufer Ihre Immobilie: als Gesamtbild, Raum für Raum.</p><a class="btn" href="#kontakt">Besichtigung vereinbaren <span class="arr"></span></a></div></div>
       </div>
       <div class="tour-frame"><figure class="scene"><img src="img/treppe.jpg" alt="Geschwungene Steintreppe mit Holzhandlauf in der Eingangshalle" style="object-position:62% 40%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/bfface22-7fc4-4667-8459-a88a8699e823.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/kueche.jpg" alt="Küche mit Calacatta-Marmorinsel unter Stuckdecke" style="object-position:45% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/c8cd405e-9e5f-4180-abd8-767794aa6bf9.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/schlafzimmer.jpg" alt="Schlafzimmer mit Leinen, Stuck und Blick auf die Frauenkirche" style="object-position:55% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/ed33e01e-4929-464f-8dac-b5056ad96fd3.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/bad.jpg" alt="Bad mit freistehender Steinwanne und Gartenblick" style="object-position:60% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/4f9b13dd-fb5c-45b4-8cd2-ef38c1bcabe4.mp4" aria-hidden="true"></video></figure><figure class="scene"><img src="img/pool.jpg" alt="Infinity-Pool mit Travertinterrasse und Blick auf See und Alpen" style="object-position:70% 50%" loading="eager"><video muted playsinline preload="auto" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3J6kCbXiRPMZ0ztx3tnlnIauPGU/ad8ee5f4-7312-46ce-87c6-ad46d8722175.mp4" aria-hidden="true"></video></figure><span class="badge" aria-hidden="true"><i></i>3D-Rundgang</span><span class="count" aria-hidden="true">01 / 05</span></div>
@@ -432,13 +454,13 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
 
   /* intro: framed photo unveils, headline lines rise */
   gsap.timeline({defaults:{ease:'expo.out'}})
-    .fromTo('.hero-pic .frame',{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.6,ease:'expo.inOut'})
-    .from('.hero-pic img',{scale:1.08,duration:2.4,ease:'power3.out'},0)
-    .from('.hero-pic figcaption',{opacity:0,y:16,duration:.9},1.1)
-    .from('.hero-copy h1 .ln > span',{yPercent:110,stagger:.12,duration:1.3},.35)
-    .from('.hero-copy .label, .hero-copy p, .hero-ctas, .hero-foot',{opacity:0,y:18,stagger:.1,duration:1},.8)
+    .fromTo('.hero-visual .frame',{clipPath:'inset(18% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'expo.out'},.3)
+    .from('.hero-visual img',{scale:1.06,duration:2.2,ease:'power3.out'},.3)
+    .from('.hero-copy h1 .ln > span',{yPercent:110,stagger:.12,duration:1.2},0)
+    .from('.hero-copy .label, .hero-side p, .hero-ctas, .hero-visual .tag',{opacity:0,y:16,stagger:.08,duration:.9},.4)
+    .from('.quick a',{opacity:0,y:24,stagger:.1,duration:.9},.9)
     .from('.nav',{opacity:0,duration:1},.6);
-  gsap.to('.hero-pic img',{yPercent:8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-visual img',{yPercent:6,ease:'none',scrollTrigger:{trigger:'.hero-visual',start:'top top',end:'bottom top',scrub:true}});
 
   /* HAUSTOUR: pinned, each room wipes in over the last */
   var scenes=gsap.utils.toArray('.scene'),caps=gsap.utils.toArray('.cap'),rooms=gsap.utils.toArray('.rooms li'),count=document.querySelector('.count'),N=scenes.length;
@@ -452,8 +474,8 @@ footer nav{display:flex;gap:24px}footer a{text-decoration:none}
     tl.fromTo(sc,{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.55,ease:'power2.inOut'},at)
       .fromTo(sc.querySelector('img'),{scale:1.1,yPercent:4},{scale:1,yPercent:0,duration:.7,ease:'power2.out'},at)
       .to(scenes[i-1].querySelector('img'),{yPercent:-6,duration:.55,ease:'power2.inOut'},at)
-      .to(caps[i-1],{autoAlpha:0,y:-18,duration:.14},at)
-      .fromTo(caps[i],{autoAlpha:0,y:24},{autoAlpha:1,y:0,duration:.25},at+.12);
+      .to(caps[i-1],{autoAlpha:0,y:-14,duration:.12},at)
+      .fromTo(caps[i],{autoAlpha:0,y:20},{autoAlpha:1,y:0,duration:.22},at+.2);
   });
   tl.to({},{duration:.35});
   /* 3D camera flights: each room's clip is scrubbed by the scroll position */
