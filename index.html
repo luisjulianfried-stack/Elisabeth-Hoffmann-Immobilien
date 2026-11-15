@@ -73,17 +73,20 @@ a:hover > .arr{transform:translateX(5px)}
 /* HERO: framed photo on espresso */
 .hero{background:var(--espresso);color:var(--on-dark);padding:calc(env(safe-area-inset-top,0px) + 76px) var(--frame) var(--frame);height:100svh;min-height:560px}
 .hero-frame{position:relative;height:100%;overflow:hidden}
-.hero-frame img{position:absolute;inset:-4% 0 0;width:100%;height:108%;object-fit:cover;object-position:50% 62%}
-.hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,20,14,.25) 0%,rgba(42,20,14,.18) 45%,rgba(42,20,14,.55) 100%)}
-.hero-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:30px;padding:0 24px}
-.hero h1{font-size:clamp(40px,5.6vw,88px);line-height:1.08;color:#fbf6ef;text-shadow:0 2px 30px rgba(20,8,4,.35)}
+.hero-frame img{position:absolute;inset:-4% 0 0;width:100%;height:108%;object-fit:cover;object-position:50% 45%}
+.hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,20,14,.15) 0%,rgba(42,20,14,0) 30%,rgba(42,20,14,.35) 55%,rgba(42,20,14,.82) 82%,rgba(42,20,14,.94) 100%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:24px 40px;flex-wrap:wrap;padding:0 clamp(20px,3.4vw,56px) clamp(56px,7vh,84px)}
+.hero h1{font-size:clamp(40px,5.4vw,84px);line-height:1.06;color:#fbf6ef}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .ln > span{display:inline-block}
-.hero .btn{align-self:center;color:#fbf6ef}
-.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;justify-content:space-between;gap:16px;padding:18px clamp(16px,2vw,28px);color:rgba(251,246,239,.85);font-size:10.5px}
+.hero .btn{align-self:flex-end;color:#fbf6ef;margin-bottom:.6em}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:2;display:flex;justify-content:flex-end;gap:16px;padding:18px clamp(16px,2vw,28px);color:rgba(251,246,239,.85);font-size:10.5px}
 @media (max-width:760px){
   .hero{padding-top:calc(env(safe-area-inset-top,0px) + 64px);height:88svh}
-  .hero-foot span:last-child{display:none}
+  .hero-copy{flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:60px}
+  .hero-frame img{height:62%;inset:0 0 auto;object-position:50% 50%}
+  .hero-frame::after{background:linear-gradient(180deg,rgba(42,20,14,0) 0%,rgba(42,20,14,0) 40%,var(--espresso) 62%,var(--espresso) 100%)}
+  .hero .btn{align-self:stretch;justify-content:center;margin-bottom:0}
 }
 
 /* INTRO / PROFIL: philosophy layout */
@@ -234,7 +237,7 @@ footer .legal{font-size:13px;color:var(--on-dark-muted);border-top:1px solid var
         <h1><span class="ln"><span>Ihr Zuhause</span></span><span class="ln"><span><em>in guten Händen.</em></span></span></h1>
         <a class="btn" href="#kontakt">Beratung anfragen <span class="arr"></span></a>
       </div>
-      <div class="hero-foot label"><span>Immobilienmakler · München</span><span>Grünwald · Pullach · Starnberger See</span></div>
+      <div class="hero-foot label"><span>Immobilienmakler · München</span></div>
     </div>
   </section>
 
