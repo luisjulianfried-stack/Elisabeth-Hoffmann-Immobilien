@@ -43,7 +43,7 @@ a:hover > .arr{transform:translateX(5px)}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding-top:calc(env(safe-area-inset-top,0px) + 18px);padding-bottom:18px;color:var(--on-dark);transition:background .5s,padding .5s}
-.nav.solid{background:rgba(42,20,14,.96);padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px}
+.nav.solid{background:var(--espresso);padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
 .nav ul a,.nav .cta{text-decoration:none;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
 .nav .brand{grid-column:2;font-family:var(--f-brand);font-size:16px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;text-align:center;line-height:1.25}
@@ -86,16 +86,19 @@ a:hover > .arr{transform:translateX(5px)}
   .hero-foot span:last-child{display:none}
 }
 
-/* INTRO / PROFIL */
-.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,7vw,120px);align-items:center;padding-block:clamp(80px,13vw,180px)}
-.intro .portrait{margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;max-width:520px}
-.intro .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
-.intro-copy{display:flex;flex-direction:column;gap:28px;max-width:560px}
-.intro-copy .label{color:var(--accent)}
-.intro-copy h2{font-size:clamp(30px,3.2vw,48px);font-style:italic;font-weight:400;line-height:1.2}
-.intro-copy p{margin:0;color:var(--muted);max-width:46ch}
-.intro-copy .sig{font-family:var(--f-display);font-style:italic;font-size:22px;color:var(--ink)}
-.intro-copy .sig span{display:block;font-family:var(--f-body);font-style:normal;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+/* INTRO / PROFIL: philosophy layout */
+.intro{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,1fr) minmax(0,6fr);align-items:stretch;padding-block:clamp(80px,12vw,170px)}
+.intro .portrait{grid-column:1;margin:0;position:relative;aspect-ratio:4/5;overflow:hidden}
+.intro .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.05)}
+.intro-copy{grid-column:3;display:flex;flex-direction:column;gap:22px;max-width:620px}
+.intro-copy h2{font-size:clamp(36px,4.4vw,66px);text-transform:uppercase;letter-spacing:-.005em;line-height:1;margin-bottom:12px}
+.intro-copy p{margin:0;color:var(--muted);max-width:52ch}
+.intro-copy .lnk{margin-top:auto;align-self:flex-start;font:700 11.5px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:6px}
+@media (max-width:820px){
+  .intro{grid-template-columns:1fr;gap:36px}
+  .intro .portrait,.intro-copy{grid-column:1}
+  .intro-copy .lnk{margin-top:12px}
+}
 
 /* HAUSTOUR */
 .tour{background:var(--espresso);color:var(--on-dark);position:relative}
@@ -238,10 +241,11 @@ footer .legal{font-size:13px;color:var(--on-dark-muted);border-top:1px solid var
   <section class="intro wrap" id="profil" aria-label="Über uns">
     <figure class="portrait"><img src="img/portrait.jpg" alt="Elisabeth Hoffmann, Inhaberin von Elisabeth Hoffmann Immobilien" loading="lazy"></figure>
     <div class="intro-copy">
-      <span class="label">Über uns</span>
-      <h2>Bei uns steht nicht der schnelle Abschluss im Mittelpunkt, sondern Ihr Zuhause.</h2>
-      <p>Persönlich, transparent und mit genauer Kenntnis des Münchner Südens. Eine feste Ansprechpartnerin vom ersten Gespräch bis zur Schlüsselübergabe.</p>
-      <div class="sig">Elisabeth Hoffmann<span>Inhaberin</span></div>
+      <h2>Über uns</h2>
+      <p>Elisabeth Hoffmann Immobilien ist ein Maklerunternehmen aus Grünwald. Elisabeth Hoffmann ist hier aufgewachsen und kennt den Münchner Süden aus erster Hand.</p>
+      <p>Wir betreuen bewusst wenige Mandate, diese dafür mit voller Aufmerksamkeit: von der Bewertung über die Präsentation bis zur Schlüsselübergabe.</p>
+      <p>Für Sie heißt das: eine feste Ansprechpartnerin, ehrliche Einschätzungen und kurze Wege.</p>
+      <a class="lnk" href="#kontakt">Kontakt aufnehmen</a>
     </div>
   </section>
 
@@ -387,7 +391,7 @@ footer .legal{font-size:13px;color:var(--on-dark-muted);border-top:1px solid var
     var img=f.querySelector('img');
     gsap.fromTo(img,{yPercent:-4},{yPercent:4,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}});
   });
-  gsap.utils.toArray('.intro-copy > *, .sec-head > *, .services-copy > .label, .services-copy > h2, .contact-left > *, .card .meta').forEach(function(el){
+  gsap.utils.toArray('.intro-copy > h2, .intro-copy > p, .intro-copy > .lnk, .sec-head > *, .services-copy > .label, .services-copy > h2, .contact-left > *, .card .meta').forEach(function(el){
     gsap.from(el,{y:30,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
   });
   gsap.from('.svc li',{y:24,opacity:0,stagger:.1,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'.svc',start:'top 85%'}});
