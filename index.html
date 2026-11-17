@@ -327,7 +327,12 @@ footer .legal{font-size:13px;color:var(--on-dark-muted);border-top:1px solid var
         <div class="field"><label for="f-mail">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
       </div>
       <div class="field"><label for="f-topic">Anliegen</label>
-        <select id="f-topic" name="topic"><option>Immobilie verkaufen</option><option>Immobilie kaufen</option><option>Marktwert ermitteln</option><option>Sonstiges</option></select></div>
+        <select id="f-topic" name="topic">
+          <optgroup label="Verkaufen"><option>Haus verkaufen</option><option>Wohnung verkaufen</option><option>Grundstück verkaufen</option></optgroup>
+          <optgroup label="Kaufen"><option>Haus kaufen</option><option>Wohnung kaufen</option><option>Grundstück kaufen</option></optgroup>
+          <optgroup label="Vermieten und Mieten"><option>Immobilie vermieten</option><option>Mietobjekt suchen</option></optgroup>
+          <optgroup label="Beratung"><option>Marktwert ermitteln lassen</option><option>Besichtigung vereinbaren</option><option>Rückruf erwünscht</option><option>Sonstiges</option></optgroup>
+        </select></div>
       <div class="field"><label for="f-msg">Nachricht</label><textarea id="f-msg" name="msg"></textarea></div>
       <p class="err" id="f-err" hidden>Bitte geben Sie Ihren Namen und eine gültige E-Mail-Adresse an.</p>
       <button class="btn" type="submit">Anfrage senden <span class="arr"></span></button>
